@@ -124,6 +124,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      */
     @Override
     public double shortestPathDist(int src, int dest) {
+        if(GA==null||GA.getNode(src)==null||GA.getNode(dest)==null)return -1;
         Map.Entry<Map<node_info, Double>, Map<node_info, node_info>> distanceAndPrevs = getAllShortestPaths(src);
         Map<node_info, Double> distances = distanceAndPrevs.getKey();
         if (!distances.containsKey(GA.getNode(dest))) { //if distances dose not contain dest- return -1.
@@ -139,6 +140,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      */
     @Override
     public List<node_info> shortestPath(int src, int dest) {
+        if(GA==null||GA.getNode(src)==null||GA.getNode(dest)==null) return null;
         Map.Entry<Map<node_info, Double>, Map<node_info, node_info>> distanceAndPrevs = getAllShortestPaths(src);
         Map<node_info, node_info> prevs = distanceAndPrevs.getValue();
         LinkedList<node_info> path = new LinkedList<>();
@@ -157,6 +159,7 @@ public class WGraph_Algo implements weighted_graph_algorithms {
      * @return
      */
     public Map.Entry<Map<node_info, Double>, Map<node_info, node_info>> getAllShortestPaths(int src) {
+
         Map<node_info, Double> distances=new HashMap<>();
         Map<node_info, node_info> prev=new HashMap<>();
         PriorityQueue<NodeAndDistance> queue=new PriorityQueue<>(this.GA.nodeSize(),

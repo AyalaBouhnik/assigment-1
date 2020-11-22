@@ -230,7 +230,7 @@ public class WGraph_DS implements weighted_graph, Serializable {
         return Objects.hash(edges, changes, graph);
     }
 
-    private static class Node implements node_info, Serializable {
+    public static class Node implements node_info, Serializable {
 
         int key;
         private static int taz = 0;
